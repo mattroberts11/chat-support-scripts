@@ -21,9 +21,4 @@ const token = createToken(user_id);
 
 const connect = chatClient.connectUser({ id: user_id, extraData }, token);
 
-// console.log(token);
-
-// exports.chatClient = chatClient;
-// exports.user_id = user_id;
-
 export {chatClient, user_id};
