@@ -2,6 +2,6 @@
   "type": "module",
   "dependencies": {
     "dotenv": "^10.0.0",
-    "stream-chat": "^4.2.0"
+    "stream-chat": "^5.1.2"
   }
 }

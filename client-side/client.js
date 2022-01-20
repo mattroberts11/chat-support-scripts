@@ -5,7 +5,9 @@ import createToken from '../server-side/createToken.js';
 dotenv.config({path: '../.env'});
 
 // const app_key = process.env["APP_KEY"];
-const app_key = 'g8c9bfgptufx';  // customer app key
+// const app_key = 'g8c9bfgptufx';  // customer app key
+const app_key = process.env["APP_KEY"];  // customer app key
+
 
 const secret = process.env["API_SECRET"];
 

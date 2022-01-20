@@ -1,8 +1,9 @@
 import { chatClient, user_id } from "./client.js";
 
 
-const getActiveUsers = async () => {
-  return await chatClient.activeChannels()
+const getActiveChannels = () => {
+  // console.log('CHAT CLIENT', chatClient);
+  return chatClient.activeChannels;
 }
 
-getActiveUsers().then( r => console.log(r));
+getActiveChannels().then( r => console.log(r));
