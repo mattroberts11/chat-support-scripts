@@ -5,7 +5,13 @@ const channel = chatClient.channel
 const createMessage = (type, id, data) => {
     const channel = chatClient.channel(type, id, data);
         return channel.sendMessage({    // user: 'matt',
-        text: "Test message 1005...!!!"
+        text: "444 Filter on topic",
+        topic: 
+          [
+            
+            'topic2'
+            
+          ]
     })
 };
 

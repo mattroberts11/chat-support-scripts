@@ -31,12 +31,11 @@ const onlyMeAndMyFriend = async (friend) => {
 
 const getChannel = async () => {
   try {
-
     const filter = { 
-
       type: 'messaging',
-      // cid: 'messaging:Skiing',
-      members: {$in: ['katy']}
+      cid: 'messaging:Skiing',
+      members: {$in: ['katy']},
+      topic:  {$in: ['topic1', 'topic3']},
     };
 
     const sort = [{ last_message_at: -1 }];
@@ -46,25 +45,19 @@ const getChannel = async () => {
       state: true,
       message_limit: 10,
     });
-
     return channels;
-    // channels.forEach( channel => {
-      
-    // });
 
   } catch (error) {
-
     console.log(error);
-
   }
 }
 
 // onlyMeAndMyFriend("george").then((r) => console.log(r));
-// getChannel().then((r) => console.log(r));
-getChannel().then((r) => {
-  if(r){
-    r.forEach(channel => {
-      console.log('CHANNEL ==', channel.state.messages.length);
-    });
-  }
-});
+getChannel().then((r) => console.log(r));
+// getChannel().then((r) => {
+//   if(r){
+//     r.forEach(channel => {
+//       console.log('CHANNEL ==', channel.state.messages.length);
+//     });
+//   }
+// });
