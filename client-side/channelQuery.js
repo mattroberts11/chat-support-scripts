@@ -30,27 +30,39 @@ const onlyMeAndMyFriend = async (friend) => {
 };
 
 const getChannel = async () => {
+  let result;
   try {
-    const filter = { 
-      type: 'messaging',
-      cid: 'messaging:Skiing',
-      members: {$in: ['katy']},
-      topic:  {$in: ['topic1', 'topic3']},
-    };
+    // const filter = { 
+    //   // type: 'messaging',
+    //   cid: 'messaging:Skiing',
+    //   members: {$in: ['katy']},
+    //   topic:  {$in: ['topic2']},
+    // };
 
-    const sort = [{ last_message_at: -1 }];
+    // const sort = [{ last_message_at: -1 }];
 
-    const channels = await chatClient.queryChannels(filter, sort, {
-      watch: false, // this is the default 
-      state: true,
-      message_limit: 10,
-    });
-    return channels;
+    // const channels = await chatClient.queryChannels(filter, sort, {
+    //   watch: false, // this is the default 
+    //   state: true,
+    //   message_limit: 10,
+    // });
+
+    const searchChannelFilter = { cid: 'messaging:Skiing' };
+    const searchMessageFilter = { topic:  {$in: ['topic2']} }
+
+    // return await chatClient.search(searchChannelFilter, searchMessageFilter);
+    result = await chatClient.search(searchChannelFilter, searchMessageFilter);
+    // if(result){
+      console.log("RESULT", result.results);
+    // }
+    // return channels;
 
   } catch (error) {
     console.log(error);
   }
+  // console.log("RESULT", result);
 }
+
 
 // onlyMeAndMyFriend("george").then((r) => console.log(r));
 getChannel().then((r) => console.log(r));
