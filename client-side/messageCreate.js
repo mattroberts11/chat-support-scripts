@@ -16,4 +16,3 @@ const createMessage = (type, id, data) => {
 };
 
 createMessage("messaging", "Skiing").then((r) => console.log(r));
- 
