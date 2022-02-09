@@ -2,7 +2,9 @@ import { chatClient, user_id } from "./client.js";
 
 const messagingMembers = async () => {
   // a standard and recommended filter
-  const filter = { type: "messaging", members: { $in: [user_id] } };
+  // const filter = { type: "messaging", members: { $in: [user_id] } };
+  const filter = { type: "messaging", name: "invite_only"};
+
   const sort = { last_message_at: -1 };
   const result = await chatClient.queryChannels(filter, sort);
   return result;
@@ -30,46 +32,45 @@ const onlyMeAndMyFriend = async (friend) => {
 };
 
 const getChannel = async () => {
-  let result;
+  
   try {
-    // const filter = { 
-    //   // type: 'messaging',
-    //   cid: 'messaging:Skiing',
-    //   members: {$in: ['katy']},
-    //   topic:  {$in: ['topic2']},
-    // };
+    const filter = { 
+      // type: 'messaging',
+      // cid: 'messaging:invite_only',
+      invite: 'pending',
+      // members: {$in: ['katy']},
+      // topic:  {$in: ['topic2']},
+    };
 
     // const sort = [{ last_message_at: -1 }];
+    const sort = {};
 
-    // const channels = await chatClient.queryChannels(filter, sort, {
-    //   watch: false, // this is the default 
-    //   state: true,
-    //   message_limit: 10,
-    // });
+    const channels = await chatClient.queryChannels(filter, sort, {
+      // watch: false, // this is the default 
+      // state: true,
+      // message_limit: 10,
+      // user_id: 'matty'
+    });
 
-    const searchChannelFilter = { cid: 'messaging:Skiing' };
-    const searchMessageFilter = { topic:  {$in: ['topic2']} }
-
-    // return await chatClient.search(searchChannelFilter, searchMessageFilter);
-    result = await chatClient.search(searchChannelFilter, searchMessageFilter);
-    // if(result){
-      console.log("RESULT", result.results);
-    // }
-    // return channels;
+    return channels;
 
   } catch (error) {
     console.log(error);
   }
-  // console.log("RESULT", result);
 }
 
+  // const pending = await chatClient.channel.queryChannels(
+  //   { invite: 'pending', 
+
+  // },{},{'user_id': user_uuid });
 
 // onlyMeAndMyFriend("george").then((r) => console.log(r));
 getChannel().then((r) => console.log(r));
+
 // getChannel().then((r) => {
 //   if(r){
 //     r.forEach(channel => {
-//       console.log('CHANNEL ==', channel.state.messages.length);
+//       console.log('CHANNEL ==', channel.state.members);
 //     });
 //   }
 // });
