@@ -36,14 +36,14 @@ const getChannel = async () => {
   try {
     const filter = { 
       // type: 'messaging',
-      // cid: 'messaging:invite_only',
-      invite: 'pending',
-      // members: {$in: ['katy']},
+      cid: 'messaging:Skiing',
+      // invite: 'pending',
+      members: {$in: ['katy']},
       // topic:  {$in: ['topic2']},
     };
 
-    // const sort = [{ last_message_at: -1 }];
-    const sort = {};
+    const sort = [{ last_message_at: -1 }];
+    // const sort = {};
 
     const channels = await chatClient.queryChannels(filter, sort, {
       // watch: false, // this is the default 
