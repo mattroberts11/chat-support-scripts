@@ -5,7 +5,7 @@ const channel = chatClient.channel
 const createMessage = (type, id, data) => {
     const channel = chatClient.channel(type, id, data);
         return channel.sendMessage({   
-        text: "Attachement search test",
+        text: "Blocklist test shit",
         attachments: [ 
           { 
               type: 'image', 
@@ -17,4 +17,4 @@ const createMessage = (type, id, data) => {
     })
 };
 
-createMessage("messaging", "Skiing").then((r) => console.log(r));
+createMessage("messaging", "testing-playground-05").then((r) => console.log(r));

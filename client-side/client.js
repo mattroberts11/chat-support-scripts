@@ -14,7 +14,7 @@ const secret = process.env["API_SECRET"];
 // For client-side auth the client uses only the app_key
 const chatClient = StreamChat.getInstance(app_key);
 
-const user_id = 'katy';
+const user_id = 'matt';
 // const user_id = '667A2C0345ABA163992015A9@AdobeID'; // customer user Id
 
 const extraData = {
